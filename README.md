@@ -6,7 +6,7 @@
 
 Interactive visualisation of the territorial suitability analysis for biomethane plant deployment across the province of **Huesca, Spain**. The map allows cell-by-cell exploration of suitability scores and the factors behind them.
 
-> The full geospatial analysis pipeline that produces these results lives in a separate repository, currently under development.
+> The full geospatial analysis pipeline that produces these results lives in a separate repository: [**Biomethane-Plant-Design**](https://github.com/BabylonFushi/Biomethane-Plant-Design).
 
 ---
 
@@ -86,7 +86,7 @@ A cell is excluded from the analysis regardless of its score if any of the follo
 
 This map is the visual output of a **Master's Thesis** focused on territorial viability analysis for biomethane plants in Aragon, Spain. The province of Huesca hosts a significant pig farming industry, making it a strategic candidate for biomethane production from slurry.
 
-The repository containing the full analysis (preprocessing, scoring and clustering) is currently under development and will be linked here once available.
+The full analysis (preprocessing, scoring and clustering) is available in the [**Biomethane-Plant-Design**](https://github.com/BabylonFushi/Biomethane-Plant-Design) repository.
 
 ---
 
@@ -104,7 +104,7 @@ The repository containing the full analysis (preprocessing, scoring and clusteri
 
 Visualización interactiva del análisis de idoneidad territorial para la implantación de plantas de biometano en la provincia de **Huesca, España**. El mapa permite explorar celda por celda las puntuaciones de idoneidad y los factores que las determinan.
 
-> El pipeline completo de análisis geoespacial que genera estos resultados se encuentra en un repositorio independiente, actualmente en desarrollo.
+> El pipeline completo de análisis geoespacial que genera estos resultados se encuentra en un repositorio independiente: [**Biomethane-Plant-Design**](https://github.com/BabylonFushi/Biomethane-Plant-Design).
 
 ---
 
@@ -184,7 +184,7 @@ Una celda queda excluida del análisis independientemente de su puntuación si s
 
 Este mapa es el resultado visual de un **Trabajo de Fin de Máster** centrado en el análisis de viabilidad territorial para plantas de biometano en Aragón, España. La provincia de Huesca cuenta con una importante industria porcina, lo que la convierte en una candidata estratégica para la producción de biometano a partir de purines.
 
-El repositorio que contiene el análisis completo (preprocesamiento, puntuación y clustering) se encuentra actualmente en desarrollo y será enlazado aquí en cuanto esté disponible.
+El repositorio con el análisis completo (preprocesamiento, puntuación y clustering) está disponible en [**Biomethane-Plant-Design**](https://github.com/BabylonFushi/Biomethane-Plant-Design).
 
 ---
 
