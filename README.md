@@ -38,17 +38,17 @@ Two final selections are additionally highlighted across eligible cells:
 
 ## Model variables
 
-Each cell is evaluated on the following variables, weighted according to their relative importance in the final decision (weights derived via the Analytic Hierarchy Process, AHP — pairwise comparison matrix, Consistency Ratio = 0.00):
+Each cell is evaluated on the following variables, weighted according to their relative importance in the final decision. Weights come from an **AHP matrix** (Analytic Hierarchy Process — Saaty pairwise comparison matrix) computed from the eigenvector of the criteria matrix, with **Consistency Ratio (CR) = 0.0000 (OK, consistent)**:
 
 | Variable | Description | Weight |
 |---|---|---|
-| **Available biomass (10 km radius)** | Total pig farming capacity (places) within a 10 km radius. Primary feedstock source for the plant. | 29 % |
-| **Distance to gas pipeline** | Distance in km to the nearest gas pipeline. Determines the cost of injecting biomethane into the grid. | 29 % |
-| **Land classification** | Urban planning and land-use suitability based on official classification (SENU, SDUD, industrial, etc.). | 15 % |
-| **Road type** | Category of the nearest road (motorway, primary, secondary, local). Determines logistical accessibility. | 10 % |
-| **Average slope** | Mean terrain slope in degrees. Affects construction and plant operation. | 7 % |
-| **Distance to road** | Distance in km to the nearest road suitable for heavy vehicles. | 5 % |
-| **Distance to urban centres** | Proximity to populated areas beyond the mandatory exclusion buffer. | 5 % |
+| **Available biomass (10 km radius)** | Total pig farming capacity (places) within a 10 km radius. Primary feedstock source for the plant. | 0.2927 (29 %) |
+| **Distance to gas pipeline** | Distance in km to the nearest gas pipeline. Determines the cost of injecting biomethane into the grid. | 0.2927 (29 %) |
+| **Land classification** | Urban planning and land-use suitability based on official classification (SENU, SDUD, industrial, etc.). | 0.1463 (15 %) |
+| **Road type** | Category of the nearest road (motorway, primary, secondary, local). Determines logistical accessibility. | 0.0976 (10 %) |
+| **Average slope** | Mean terrain slope in degrees. Affects construction and plant operation. | 0.0732 (7 %) |
+| **Distance to road** | Distance in km to the nearest road suitable for heavy vehicles. | 0.0488 (5 %) |
+| **Distance to urban centres** | Proximity to populated areas beyond the mandatory exclusion buffer. | 0.0488 (5 %) |
 
 > Natura 2000 network overlap is not scored — it acts as a hard exclusion criterion (see below).
 
@@ -137,17 +137,17 @@ Además, se destacan dos selecciones finales entre las celdas elegibles:
 
 ## Variables del modelo
 
-Cada celda se evalúa según las siguientes variables, ponderadas según su importancia relativa en la decisión final (pesos derivados mediante el Proceso Analítico Jerárquico, AHP — matriz de comparación por pares, Ratio de Consistencia = 0,00):
+Cada celda se evalúa según las siguientes variables, ponderadas según su importancia relativa en la decisión final. Los pesos proceden de una **matriz AHP** (Proceso Analítico Jerárquico — matriz de comparación por pares de Saaty) calculada a partir del autovector de la matriz de criterios, con **Ratio de Consistencia (CR) = 0,0000 (OK, consistente)**:
 
 | Variable | Descripción | Peso |
 |---|---|---|
-| **Biomasa disponible (radio de 10 km)** | Capacidad porcina total (plazas) en un radio de 10 km. Fuente principal de materia prima para la planta. | 29 % |
-| **Distancia al gasoducto** | Distancia en km al gasoducto más cercano. Determina el coste de inyección del biometano en la red. | 29 % |
-| **Clasificación del suelo** | Idoneidad urbanística y de uso del suelo según la clasificación oficial (SENU, SDUD, industrial, etc.). | 15 % |
-| **Tipo de vía** | Categoría de la vía más cercana (autovía, primaria, secundaria, local). Determina la accesibilidad logística. | 10 % |
-| **Pendiente media** | Pendiente media del terreno en grados. Afecta a la construcción y operación de la planta. | 7 % |
-| **Distancia a vía** | Distancia en km a la vía más cercana apta para vehículos pesados. | 5 % |
-| **Distancia a núcleos urbanos** | Proximidad a zonas habitadas más allá del buffer de exclusión obligatorio. | 5 % |
+| **Biomasa disponible (radio de 10 km)** | Capacidad porcina total (plazas) en un radio de 10 km. Fuente principal de materia prima para la planta. | 0,2927 (29 %) |
+| **Distancia al gasoducto** | Distancia en km al gasoducto más cercano. Determina el coste de inyección del biometano en la red. | 0,2927 (29 %) |
+| **Clasificación del suelo** | Idoneidad urbanística y de uso del suelo según la clasificación oficial (SENU, SDUD, industrial, etc.). | 0,1463 (15 %) |
+| **Tipo de vía** | Categoría de la vía más cercana (autovía, primaria, secundaria, local). Determina la accesibilidad logística. | 0,0976 (10 %) |
+| **Pendiente media** | Pendiente media del terreno en grados. Afecta a la construcción y operación de la planta. | 0,0732 (7 %) |
+| **Distancia a vía** | Distancia en km a la vía más cercana apta para vehículos pesados. | 0,0488 (5 %) |
+| **Distancia a núcleos urbanos** | Proximidad a zonas habitadas más allá del buffer de exclusión obligatorio. | 0,0488 (5 %) |
 
 > La Red Natura 2000 no se puntúa: actúa como criterio de exclusión directa (ver más abajo).
 
