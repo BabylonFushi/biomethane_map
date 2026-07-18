@@ -1,3 +1,98 @@
+## 🇪🇸 Español
+
+# Mapa de Idoneidad — Planta de Biometano · Huesca
+
+![Vista previa del mapa](gif_huesca.gif)
+
+Visualización interactiva del análisis de idoneidad territorial para la implantación de plantas de biometano en la provincia de **Huesca, España**. El mapa permite explorar celda por celda las puntuaciones de idoneidad y los factores que las determinan.
+
+> El pipeline completo de análisis geoespacial que genera estos resultados se encuentra en un repositorio independiente: [**Biomethane-Plant-Design**](https://github.com/BabylonFushi/Biomethane-Plant-Design).
+
+---
+
+## Ver el mapa
+
+**[Abrir mapa interactivo](https://babylonfushi.github.io/biomethane_map/)**
+
+---
+
+## ¿Qué muestra este mapa?
+
+La provincia de Huesca está dividida en una cuadrícula de celdas de **500 × 500 metros** (~63.600 celdas en total). Cada celda recibe una puntuación de idoneidad entre 0 y 100 basada en siete criterios clave para la viabilidad de una planta de biometano.
+
+Las celdas se clasifican en cuatro categorías:
+
+| Categoría | Puntuación |
+|---|---|
+| 🟢 Óptima | ≥ 65 |
+| 🟡 Buena | 50 – 64 |
+| 🟠 Moderada | 35 – 49 |
+| 🔘 No apta / Excluida | < 35 o cumple un criterio de exclusión |
+
+Además, se destacan dos selecciones finales entre las celdas elegibles:
+
+- 🟣 **Top 10** — Las diez ubicaciones con la puntuación global más alta.
+- 🌸 **Viable en ambos modelos** — Celdas que cumplen simultáneamente los umbrales mínimos de biomasa, distancia al gasoducto, pendiente y tipo de vía.
+
+---
+
+## Variables del modelo
+
+Cada celda se evalúa según las siguientes variables, ponderadas según su importancia relativa en la decisión final. Los pesos proceden de una **matriz AHP** (Proceso Analítico Jerárquico — matriz de comparación por pares de Saaty) calculada a partir del autovector de la matriz de criterios, con **Ratio de Consistencia (CR) = 0,0000 (OK, consistente)**:
+
+| Variable | Descripción | Peso |
+|---|---|---|
+| **Biomasa disponible (radio de 10 km)** | Capacidad porcina total (plazas) en un radio de 10 km. Fuente principal de materia prima para la planta. | 0,2927 (29 %) |
+| **Distancia al gasoducto** | Distancia en km al gasoducto más cercano. Determina el coste de inyección del biometano en la red. | 0,2927 (29 %) |
+| **Clasificación del suelo** | Idoneidad urbanística y de uso del suelo según la clasificación oficial (SENU, SDUD, industrial, etc.). | 0,1463 (15 %) |
+| **Tipo de vía** | Categoría de la vía más cercana (autovía, primaria, secundaria, local). Determina la accesibilidad logística. | 0,0976 (10 %) |
+| **Pendiente media** | Pendiente media del terreno en grados. Afecta a la construcción y operación de la planta. | 0,0732 (7 %) |
+| **Distancia a vía** | Distancia en km a la vía más cercana apta para vehículos pesados. | 0,0488 (5 %) |
+| **Distancia a núcleos urbanos** | Proximidad a zonas habitadas más allá del buffer de exclusión obligatorio. | 0,0488 (5 %) |
+
+> La Red Natura 2000 no se puntúa: actúa como criterio de exclusión directa (ver más abajo).
+
+### Criterios de exclusión automática
+
+Una celda queda excluida del análisis independientemente de su puntuación si se cumple alguna de las siguientes condiciones:
+
+- Suelo clasificado como protegido, residencial o de uso incompatible.
+- Solapamiento con zonas Natura 2000 de alta sensibilidad (ZEC + ZEPA).
+- Pendiente media superior a 15°.
+- Sin acceso a vías aptas para vehículos pesados.
+- Biomasa inferior a 200.000 plazas en un radio de 10 km.
+
+---
+
+## Cómo usar el mapa
+
+- **Desplázate y haz zoom** con el ratón o el trackpad.
+- **Haz clic en cualquier celda** para ver su perfil completo en el tooltip:
+  - Puntuación, clúster, biomasa, distancias, pendiente, clasificación del suelo y motivo de exclusión (si aplica).
+- La **leyenda** (esquina inferior izquierda) identifica los clústeres K-Means y las categorías de selección final.
+
+---
+
+## Tecnologías
+
+- [deck.gl](https://deck.gl/) — Renderizado de capas geoespaciales mediante WebGL
+- [pydeck](https://deckgl.readthedocs.io/en/latest/) — Generación de mapas desde Python
+- [GeoPandas](https://geopandas.org/) — Procesamiento de datos vectoriales
+- [Shapely](https://shapely.readthedocs.io/) — Operaciones geométricas
+- GitHub Pages — Alojamiento estático del mapa
+
+---
+
+## Contexto
+
+Este mapa es el resultado visual de un **Trabajo de Fin de Máster** centrado en el análisis de viabilidad territorial para plantas de biometano en Aragón, España. La provincia de Huesca cuenta con una importante industria porcina, lo que la convierte en una candidata estratégica para la producción de biometano a partir de purines.
+
+El repositorio con el análisis completo (preprocesamiento, puntuación y clustering) está disponible en [**Biomethane-Plant-Design**](https://github.com/BabylonFushi/Biomethane-Plant-Design).
+
+---
+
+*Fuentes de datos: IGN, OpenStreetMap, MITECO, Gobierno de Aragón · Proyección: EPSG:25830 → EPSG:4326*
+
 ## 🇬🇧 English
 
 # Suitability Map — Biomethane Plant · Huesca
@@ -97,97 +192,3 @@ The full analysis (preprocessing, scoring and clustering) is available in the [*
 
 ---
 
-## 🇪🇸 Español
-
-# Mapa de Idoneidad — Planta de Biometano · Huesca
-
-![Vista previa del mapa](gif_huesca.gif)
-
-Visualización interactiva del análisis de idoneidad territorial para la implantación de plantas de biometano en la provincia de **Huesca, España**. El mapa permite explorar celda por celda las puntuaciones de idoneidad y los factores que las determinan.
-
-> El pipeline completo de análisis geoespacial que genera estos resultados se encuentra en un repositorio independiente: [**Biomethane-Plant-Design**](https://github.com/BabylonFushi/Biomethane-Plant-Design).
-
----
-
-## Ver el mapa
-
-**[Abrir mapa interactivo](https://babylonfushi.github.io/biomethane_map/)**
-
----
-
-## ¿Qué muestra este mapa?
-
-La provincia de Huesca está dividida en una cuadrícula de celdas de **500 × 500 metros** (~63.600 celdas en total). Cada celda recibe una puntuación de idoneidad entre 0 y 100 basada en siete criterios clave para la viabilidad de una planta de biometano.
-
-Las celdas se clasifican en cuatro categorías:
-
-| Categoría | Puntuación |
-|---|---|
-| 🟢 Óptima | ≥ 65 |
-| 🟡 Buena | 50 – 64 |
-| 🟠 Moderada | 35 – 49 |
-| 🔘 No apta / Excluida | < 35 o cumple un criterio de exclusión |
-
-Además, se destacan dos selecciones finales entre las celdas elegibles:
-
-- 🟣 **Top 10** — Las diez ubicaciones con la puntuación global más alta.
-- 🌸 **Viable en ambos modelos** — Celdas que cumplen simultáneamente los umbrales mínimos de biomasa, distancia al gasoducto, pendiente y tipo de vía.
-
----
-
-## Variables del modelo
-
-Cada celda se evalúa según las siguientes variables, ponderadas según su importancia relativa en la decisión final. Los pesos proceden de una **matriz AHP** (Proceso Analítico Jerárquico — matriz de comparación por pares de Saaty) calculada a partir del autovector de la matriz de criterios, con **Ratio de Consistencia (CR) = 0,0000 (OK, consistente)**:
-
-| Variable | Descripción | Peso |
-|---|---|---|
-| **Biomasa disponible (radio de 10 km)** | Capacidad porcina total (plazas) en un radio de 10 km. Fuente principal de materia prima para la planta. | 0,2927 (29 %) |
-| **Distancia al gasoducto** | Distancia en km al gasoducto más cercano. Determina el coste de inyección del biometano en la red. | 0,2927 (29 %) |
-| **Clasificación del suelo** | Idoneidad urbanística y de uso del suelo según la clasificación oficial (SENU, SDUD, industrial, etc.). | 0,1463 (15 %) |
-| **Tipo de vía** | Categoría de la vía más cercana (autovía, primaria, secundaria, local). Determina la accesibilidad logística. | 0,0976 (10 %) |
-| **Pendiente media** | Pendiente media del terreno en grados. Afecta a la construcción y operación de la planta. | 0,0732 (7 %) |
-| **Distancia a vía** | Distancia en km a la vía más cercana apta para vehículos pesados. | 0,0488 (5 %) |
-| **Distancia a núcleos urbanos** | Proximidad a zonas habitadas más allá del buffer de exclusión obligatorio. | 0,0488 (5 %) |
-
-> La Red Natura 2000 no se puntúa: actúa como criterio de exclusión directa (ver más abajo).
-
-### Criterios de exclusión automática
-
-Una celda queda excluida del análisis independientemente de su puntuación si se cumple alguna de las siguientes condiciones:
-
-- Suelo clasificado como protegido, residencial o de uso incompatible.
-- Solapamiento con zonas Natura 2000 de alta sensibilidad (ZEC + ZEPA).
-- Pendiente media superior a 15°.
-- Sin acceso a vías aptas para vehículos pesados.
-- Biomasa inferior a 200.000 plazas en un radio de 10 km.
-
----
-
-## Cómo usar el mapa
-
-- **Desplázate y haz zoom** con el ratón o el trackpad.
-- **Haz clic en cualquier celda** para ver su perfil completo en el tooltip:
-  - Puntuación, clúster, biomasa, distancias, pendiente, clasificación del suelo y motivo de exclusión (si aplica).
-- La **leyenda** (esquina inferior izquierda) identifica los clústeres K-Means y las categorías de selección final.
-
----
-
-## Tecnologías
-
-- [deck.gl](https://deck.gl/) — Renderizado de capas geoespaciales mediante WebGL
-- [pydeck](https://deckgl.readthedocs.io/en/latest/) — Generación de mapas desde Python
-- [GeoPandas](https://geopandas.org/) — Procesamiento de datos vectoriales
-- [Shapely](https://shapely.readthedocs.io/) — Operaciones geométricas
-- GitHub Pages — Alojamiento estático del mapa
-
----
-
-## Contexto
-
-Este mapa es el resultado visual de un **Trabajo de Fin de Máster** centrado en el análisis de viabilidad territorial para plantas de biometano en Aragón, España. La provincia de Huesca cuenta con una importante industria porcina, lo que la convierte en una candidata estratégica para la producción de biometano a partir de purines.
-
-El repositorio con el análisis completo (preprocesamiento, puntuación y clustering) está disponible en [**Biomethane-Plant-Design**](https://github.com/BabylonFushi/Biomethane-Plant-Design).
-
----
-
-*Fuentes de datos: IGN, OpenStreetMap, MITECO, Gobierno de Aragón · Proyección: EPSG:25830 → EPSG:4326*
